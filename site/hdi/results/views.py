@@ -23,6 +23,9 @@ def results(request, id):
 
 def redirect(request):
     isim = request.GET.get("isim", None)
+    egitim = request.GET.get("egitim", None)
+    yil = request.GET.get("yaş", None)
+    mail = request.GET.get("mail", None)
     ip, is_routable = get_client_ip(request)
 
     row = []
@@ -37,6 +40,9 @@ def redirect(request):
         row.append(id)
         row.append(ip)
         row.append(isim)
+        row.append(egitim)
+        row.append(yil)
+        row.append(mail)
         db.writerow(row)
 
     return HttpResponseRedirect(f"/res/{id}")
